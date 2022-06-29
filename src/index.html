@@ -9,7 +9,7 @@
   <body>
     <!-- ########### START FIRST SCREEN ########### -->
     <section class="start-screen">
-      <form class="start-screen__form" id="parallax">
+      <form class="start-screen__form" id="form">
         <h1 class="start-screen__name">What's your name?</h1>
         <div class="position-relative">
           <input
@@ -23,13 +23,36 @@
         </div>
         <h1 class="start-screen__mode--text">Choose your game mode:</h1>
         <div class="start-screen__mode--btnblock">
-          <a class="start-screen__mode--btn"><span>Practice</span></a>
-          <a class="start-screen__mode--btn">
-            <span>Time Attack</span>
-          </a>
+          <!-- *** Practice *** -->
+          <div class="start-screen__mode--btn">
+            <input
+              class="start-screen__mode--radio"
+              id="practice"
+              type="radio"
+              checked
+              name="mode"
+            />
+            <label class="start-screen__mode--label" for="practice">
+              Practice
+            </label>
+          </div>
+          <!-- *** Attack *** -->
+          <div class="start-screen__mode--btn">
+            <input
+              class="start-screen__mode--radio"
+              id="attack"
+              type="radio"
+              name="mode"
+            />
+            <label class="start-screen__mode--label" for="attack">
+              Time Attack
+            </label>
+          </div>
+
+          <!-- *** end *** -->
         </div>
         <button class="start-screen__startBtn" type="submit">Let’s go!</button>
-        <a href="https://whois.ru" class="start-screen__rules">
+        <a class="start-screen__rules" href="https://whois.ru" target="_blank">
           don’t know rules? clicke <span>here</span>!
         </a>
         <div class="start-screen__leaderboard">

@@ -1,4 +1,4 @@
 import '../styles/style.scss'
+import { _renderStart } from './start'
 
-import { parallax } from './parallax.js'
-parallax()
+_renderStart()

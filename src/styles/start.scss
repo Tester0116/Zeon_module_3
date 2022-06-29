@@ -19,7 +19,6 @@ $gray: #9b9b9b;
 
   &__form {
     min-width: 200px;
-    height: auto;
     padding: 30px;
     background-color: rgba(black, 0.5);
     border-radius: 20px;
@@ -39,12 +38,13 @@ $gray: #9b9b9b;
   &__name--input {
     font-family: inherit;
     width: 100%;
+    height: 70px;
     border: 0;
-    border-bottom: 2px solid $gray;
+    border-bottom: 3px solid $gray;
     outline: 0;
     font-size: 1.3rem;
     color: $white;
-    padding: 25px 0 7px 0;
+    padding: 25px 0 0 0;
     background: transparent;
     transition: border-color 0.2s;
 
@@ -62,9 +62,9 @@ $gray: #9b9b9b;
       ~ .start-screen__name--label {
         position: absolute;
         top: 0;
-        display: block;
+        left: 0;
         transition: 0.2s;
-        font-size: 0.8rem;
+        font-size: 1rem;
         color: $primary;
         font-weight: 700;
       }
@@ -82,7 +82,7 @@ $gray: #9b9b9b;
   &__name--label {
     position: absolute;
     top: 0;
-    display: block;
+    left: 0;
     transition: 0.2s;
     font-size: 1rem;
     color: $gray;
@@ -98,37 +98,51 @@ $gray: #9b9b9b;
       display: flex;
       gap: 10px;
     }
+
     &--btn {
+      user-select: none;
+      cursor: pointer;
       margin-top: 20px;
       background-image: linear-gradient(to right, $secondary 0%, $primary 100%);
       color: $primary;
       display: block;
       height: 50px;
       font-size: 1.2em;
-      padding: 2px 3px;
+      padding: 3px;
       position: relative;
       width: 7em;
       z-index: 2;
 
-      &:hover {
-        color: #fff;
-      }
-
-      & > span {
+      & > label {
         background: #0e0e10;
         @include flex-center-block;
         height: 100%;
         transition: all 0.5s ease;
         width: 100%;
       }
-
-      &:hover span {
-        background: transparent;
-      }
+    }
+    &--label {
+      cursor: pointer;
+      user-select: none;
+      background: #0e0e10;
+      color: $white;
+      position: relative;
+      @include flex-center-block;
+      height: 50px;
+      transition: all 0.5s ease;
+      width: 100%;
+    }
+    &--radio {
+      display: none;
+    }
+    &--radio:checked + &--label {
+      color: white;
+      background: transparent;
     }
   }
 
   &__startBtn {
+    user-select: none;
     margin-top: 50px;
     width: 200px;
     height: 60px;
