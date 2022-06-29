@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>module 3</title>
+  </head>
+  <body>
+    <!-- ########### START FIRST SCREEN ########### -->
+    <section class="start-screen">
+      <form class="start-screen__form" id="parallax">
+        <h1 class="start-screen__name">What's your name?</h1>
+        <div class="position-relative">
+          <input
+            id="name"
+            class="start-screen__name--input"
+            type="text"
+            placeholder="name"
+            required
+          />
+          <label class="start-screen__name--label" for="name">Name</label>
+        </div>
+        <h1 class="start-screen__mode--text">Choose your game mode:</h1>
+        <div class="start-screen__mode--btnblock">
+          <a class="start-screen__mode--btn"><span>Practice</span></a>
+          <a class="start-screen__mode--btn">
+            <span>Time Attack</span>
+          </a>
+        </div>
+        <button class="start-screen__startBtn" type="submit">Let’s go!</button>
+        <a href="https://whois.ru" class="start-screen__rules">
+          don’t know rules? clicke <span>here</span>!
+        </a>
+        <div class="start-screen__leaderboard">
+          <a href="#">LEADERBOARD</a>
+        </div>
+      </form>
+    </section>
+    <!-- ########### END FIRST SCREEN ########### -->
+
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>

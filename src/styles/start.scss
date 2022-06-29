@@ -1,0 +1,214 @@
+@mixin flex-center-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+
+.start-screen {
+  background-image: url('../assets/img/start-bg.jpg');
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include flex-center-block;
+
+  &__form {
+    min-width: 200px;
+    height: auto;
+    padding: 30px;
+    background-color: rgba(black, 0.5);
+    border-radius: 20px;
+    @include flex-center-block;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px $white;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      box-shadow: 0px 0px 25px 0px $white;
+    }
+  }
+  &__name {
+    color: $white;
+    font-size: 54px;
+    margin-bottom: 20px;
+  }
+  &__name--input {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid $gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: $white;
+    padding: 25px 0 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:placeholder-shown ~ .start-screen__name--label {
+      font-size: 1rem;
+      cursor: text;
+      top: 30px;
+    }
+
+    &:focus {
+      ~ .start-screen__name--label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 0.8rem;
+        color: $primary;
+        font-weight: 700;
+      }
+      padding-top: 16px;
+      font-weight: 700;
+      border-width: 3px;
+      border-image: linear-gradient(to right, $primary, $secondary);
+      border-image-slice: 1;
+    }
+    &:required,
+    &:invalid {
+      box-shadow: none;
+    }
+  }
+  &__name--label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $gray;
+  }
+
+  &__mode {
+    &--text {
+      color: $white;
+      font-size: 20px;
+      margin-top: 60px;
+    }
+    &--btnblock {
+      display: flex;
+      gap: 10px;
+    }
+    &--btn {
+      margin-top: 20px;
+      background-image: linear-gradient(to right, $secondary 0%, $primary 100%);
+      color: $primary;
+      display: block;
+      height: 50px;
+      font-size: 1.2em;
+      padding: 2px 3px;
+      position: relative;
+      width: 7em;
+      z-index: 2;
+
+      &:hover {
+        color: #fff;
+      }
+
+      & > span {
+        background: #0e0e10;
+        @include flex-center-block;
+        height: 100%;
+        transition: all 0.5s ease;
+        width: 100%;
+      }
+
+      &:hover span {
+        background: transparent;
+      }
+    }
+  }
+
+  &__startBtn {
+    margin-top: 50px;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    background-size: 400%;
+    border-radius: 30px;
+    z-index: 1;
+    animation: letsGoAnim 8s linear infinite;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      z-index: -1;
+      background: linear-gradient(45deg, #f15523, #ef3224, #7c3697);
+      background-size: 400%;
+      border-radius: 40px;
+      transition: 0.5%;
+      filter: blur(20px);
+      opacity: 1;
+      animation: letsGoAnim 8s linear infinite;
+    }
+  }
+
+  &__rules {
+    color: $white;
+    font-size: 1rem;
+    margin: 20px 0;
+    cursor: auto;
+    & > span {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  &__leaderboard {
+    color: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #12bcb0 20%, #fabe0e 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border: 3px solid transparent;
+    border-image: linear-gradient(135deg, #12bcb0 20%, #fabe0e 70%);
+    transition: all 0.2s ease-in-out;
+    border-image-slice: 1;
+
+    &:hover {
+      color: transparent;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-bottom: 20px;
+      background: linear-gradient(270deg, #12bcb0 20%, #fabe0e 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      padding: 0.3em 0.6em;
+      border: 3px solid transparent;
+      border-image: linear-gradient(270deg, #12bcb0 20%, #fabe0e 70%);
+      transition: all 0.2s ease-in-out;
+      border-image-slice: 1;
+    }
+  }
+}
+
+@keyframes letsGoAnim {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
