@@ -9,12 +9,32 @@
   <body>
     <!-- ########### START GAME SCREEN ########### -->
     <section class="game">
-      <div class="game-container">
-        <div class="game-container__nameAndtimer">
-          <h1 class="game-container__name">
-            Good luck, <span id="name">Tester</span>
-          </h1>
-          <div id="timer"></div>
+      <div class="game__bg-dark">
+        <div class="game-container">
+          <div class="game-container__nameAndtimer">
+            <h1 class="game-container__name">
+              Good luck, <span id="name">Tester</span>
+            </h1>
+            <div id="timer"></div>
+          </div>
+
+          <div class="game-container__task">
+            <div class="game-container__task--numbers">10</div>
+            <div class="game-container__task--operator">+</div>
+            <div class="game-container__task--numbers">42</div>
+            <div class="game-container__task--equal">=</div>
+            <input
+              class="game-container__task--result"
+              id="gameResult"
+              type="number"
+              placeholder="5"
+            />
+          </div>
+          <h4 class="game-container__score">Your score:<span>41</span></h4>
+          <button class="game-container__stop">
+            <span>STOP GAME</span>
+            <b></b>
+          </button>
         </div>
       </div>
     </section>

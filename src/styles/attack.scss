@@ -1,10 +1,22 @@
+$--clr: #1e9bff;
 .game {
   @include parallax-bg('../assets/img/game-bg.jpg');
-  @include flex-center-block;
+  &__bg-dark {
+    flex-direction: column;
+    @include flex-center-block;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(black, 0.4);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+  }
   &::before {
     content: '';
     position: absolute;
-    top: 10%;
+    top: 5%;
     right: 20%;
     max-width: 300px;
     max-height: 300px;
@@ -17,7 +29,7 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     left: 20%;
     max-width: 300px;
     max-height: 300px;
@@ -31,7 +43,7 @@
   &-container {
     position: relative;
     min-width: 200px;
-    height: 400px;
+    min-height: 400px;
     z-index: 2;
     width: 50%;
     padding: 30px;
@@ -46,19 +58,18 @@
       box-shadow: 0px 0px 25px 0px white;
     }
 
-    &__name {
-      // color: #ff2c24;
-    }
     &__nameAndtimer {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
+      gap: 20px;
       width: 100%;
-      @media (max-width: 701px) {
+      @media (max-width: 792px) {
         justify-content: center;
       }
     }
+    //  *** start timer styles ***
     &__timer {
       position: relative;
       width: 100px;
@@ -111,6 +122,127 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3em;
+    }
+    //  *** end timer styles ***
+
+    &__stop {
+      margin-top: 50px;
+      position: relative;
+      background: #444;
+      color: white;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      letter-spacing: 0.1em;
+      padding: 10px 30px;
+      transition: 0.5s;
+      color: $--clr;
+      background: $--clr;
+      box-shadow: 0 0 35px $--clr;
+      &:hover {
+        letter-spacing: 0.25em;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: #27282c;
+      }
+      & > span {
+        position: relative;
+        z-index: 1;
+      }
+      & > b {
+        position: absolute;
+        inset: 0;
+        display: block;
+        &::before {
+          content: '';
+          position: absolute;
+          top: -3.5px;
+          left: 80%;
+          height: 4px;
+          width: 15px;
+          border: 2px solid $--clr;
+          background-color: #27282c;
+          transform: translateX(-50%);
+          transition: 0.5s;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -3.5px;
+          left: 20%;
+          height: 4px;
+          width: 15px;
+          border: 2px solid $--clr;
+          background-color: #27282c;
+          transform: translateX(-50%);
+          transition: 0.5s;
+        }
+      }
+      &:hover b::before {
+        width: 25px;
+        left: 20%;
+      }
+      &:hover b::after {
+        width: 22px;
+        left: 80%;
+      }
+    }
+
+    &__task {
+      @include flex-center-block;
+      // background-color: red;
+      justify-content: space-evenly;
+      width: 100%;
+      font-size: 6rem;
+      margin-top: 40px;
+      &--numbers {
+        font-family: 'Number';
+        font-size: 6rem;
+      }
+      &--operator {
+        font-family: 'Number';
+        font-size: 6rem;
+      }
+      &--equal {
+        font-family: 'Number';
+        font-size: 6rem;
+      }
+      &--result {
+        font-family: 'Number';
+        width: 15%;
+        outline: none;
+        font-size: 6rem;
+        height: 100%;
+        @include flex-center-block;
+        -webkit-appearance: none;
+        background: transparent;
+
+        border: none;
+      }
+      @media (max-width: 630px) {
+        &--numbers {
+          font-size: 4rem;
+        }
+        &--operator {
+          font-size: 4rem;
+        }
+        &--equal {
+          font-size: 4rem;
+        }
+        &--result {
+          font-size: 4rem;
+        }
+      }
+    }
+    &__score {
+      margin-top: 40px;
+      font-size: 1rem;
+      & > span {
+        margin-left: 10px;
+      }
     }
   }
 }

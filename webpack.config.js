@@ -34,7 +34,11 @@ module.exports = {
     rules: [
       {
         test: /\.(jpe?g|png|svg)$/i,
-        type: 'asset',
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
       },
       {
         test: /\.s[ac]ss$/i,

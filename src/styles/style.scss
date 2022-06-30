@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
-
+@import '_fonts.scss';
 @import 'mixins.scss';
 @import 'command.scss';
 @import 'start.scss';
@@ -24,4 +23,13 @@ button {
 a {
   cursor: pointer;
   text-decoration: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
