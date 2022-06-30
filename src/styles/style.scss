@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 
+@import 'mixins.scss';
 @import 'command.scss';
 @import 'start.scss';
+@import 'attack.scss';
 
 * {
   margin: 0;
@@ -9,6 +11,10 @@
   box-sizing: border-box;
   font-family: 'Kdam Thmor Pro', sans-serif;
   hyphens: auto;
+}
+
+:root {
+  font-size: calc(0.5vw + 10px);
 }
 
 button {

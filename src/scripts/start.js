@@ -1,24 +1,17 @@
 const form = document.getElementById('form')
-const modes = document.querySelectorAll('.start-screen__mode--btn')
+const nameStorage = localStorage.getItem('name')
+const nameInputStorage = document.getElementById('nameForm')
 
 const startGame = (e) => {
+  const mode = document.querySelector('input[type="radio"]:checked')
+  const nameInput = document.getElementById('nameForm')
+
   e.preventDefault()
-  console.log(document.querySelector('input[type="radio"]:checked').id)
+  localStorage.setItem('name', nameInput.value)
+  location.assign(`${mode.id === 'attack' ? 'attack.html' : 'practice.html'}`)
+}
+if (nameStorage !== null) {
+  nameInputStorage.value = nameStorage
 }
 
-// const buttons = [false, false]
-
-// const changeActivity = (i) => {
-//   buttons.map((button, index) => {})
-// }
-
-const setActiveMode = (mode, index) => {
-  // modes.forEach((mode) => {
-  //   mode.classList.remove('active')
-  // })
-  // mode.classList.toggle('active')
-}
-
-export const _renderStart = () => {
-  form.addEventListener('submit', startGame)
-}
+form.addEventListener('submit', startGame)

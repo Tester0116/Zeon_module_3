@@ -1,20 +1,11 @@
-@mixin flex-center-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 $primary: #11998e;
 $secondary: #38ef7d;
-$white: #fff;
 $gray: #9b9b9b;
 
 .start-screen {
-  background-image: url('../assets/img/start-bg.jpg');
-  height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 20px;
+  text-align: center;
+  @include parallax-bg('../assets/img/start-bg.jpg');
   @include flex-center-block;
 
   &__form {
@@ -24,16 +15,20 @@ $gray: #9b9b9b;
     border-radius: 20px;
     @include flex-center-block;
     flex-direction: column;
-    box-shadow: 0px 0px 10px 0px $white;
+    box-shadow: 0px 0px 10px 0px white;
     transition: all 0.4s ease-in-out;
     &:hover {
-      box-shadow: 0px 0px 25px 0px $white;
+      box-shadow: 0px 0px 25px 0px white;
     }
   }
   &__name {
-    color: $white;
-    font-size: 54px;
+    color: white;
+    font-size: 3.2rem;
     margin-bottom: 20px;
+
+    @media (max-width: 320px) {
+      margin-bottom: -10px;
+    }
   }
   &__name--input {
     font-family: inherit;
@@ -43,15 +38,14 @@ $gray: #9b9b9b;
     border-bottom: 3px solid $gray;
     outline: 0;
     font-size: 1.3rem;
-    color: $white;
+    color: white;
     padding: 25px 0 0 0;
     background: transparent;
-    transition: border-color 0.2s;
+    transition: border-color 0.5s;
 
     &::placeholder {
       color: transparent;
     }
-
     &:placeholder-shown ~ .start-screen__name--label {
       font-size: 1rem;
       cursor: text;
@@ -90,7 +84,7 @@ $gray: #9b9b9b;
 
   &__mode {
     &--text {
-      color: $white;
+      color: white;
       font-size: 20px;
       margin-top: 60px;
     }
@@ -125,7 +119,7 @@ $gray: #9b9b9b;
       cursor: pointer;
       user-select: none;
       background: #0e0e10;
-      color: $white;
+      color: white;
       position: relative;
       @include flex-center-block;
       height: 50px;
@@ -144,12 +138,12 @@ $gray: #9b9b9b;
   &__startBtn {
     user-select: none;
     margin-top: 50px;
-    width: 200px;
+    width: 8.5em;
     height: 60px;
     text-align: center;
     line-height: 60px;
-    color: #fff;
-    font-size: 24px;
+    color: white;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-family: sans-serif;
     background-size: 400%;
@@ -176,7 +170,7 @@ $gray: #9b9b9b;
   }
 
   &__rules {
-    color: $white;
+    color: white;
     font-size: 1rem;
     margin: 20px 0;
     cursor: auto;

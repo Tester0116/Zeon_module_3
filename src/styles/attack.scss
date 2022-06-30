@@ -1,0 +1,126 @@
+.game {
+  @include parallax-bg('../assets/img/game-bg.jpg');
+  @include flex-center-block;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 20%;
+    max-width: 300px;
+    max-height: 300px;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
+    background: linear-gradient(#f9d924, #ff2c24);
+    animation: blocks 5s ease-in-out infinite;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    max-width: 300px;
+    max-height: 300px;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
+    background: linear-gradient(#f9d924, #ff2c24);
+    animation: blocks 5s ease-in-out infinite;
+    animation-delay: -2.5s;
+  }
+  &-container {
+    position: relative;
+    min-width: 200px;
+    height: 400px;
+    z-index: 2;
+    width: 50%;
+    padding: 30px;
+    background-color: rgba(white, 0.4);
+    border-radius: 20px;
+    @include flex-center-block;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0px 0px 10px 0px black;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      box-shadow: 0px 0px 25px 0px white;
+    }
+
+    &__name {
+      // color: #ff2c24;
+    }
+    &__nameAndtimer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: 100%;
+      @media (max-width: 701px) {
+        justify-content: center;
+      }
+    }
+    &__timer {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      user-select: none;
+    }
+
+    &__svg {
+      transform: scaleX(-1);
+    }
+
+    &__circle {
+      fill: none;
+      stroke: none;
+    }
+
+    &__path-elapsed {
+      stroke-width: 7px;
+      stroke: grey;
+    }
+
+    &__path-remaining {
+      stroke-width: 7px;
+      stroke-linecap: round;
+      transform: rotate(90deg);
+      transform-origin: center;
+      transition: 1s linear all;
+      fill-rule: nonzero;
+      stroke: currentColor;
+    }
+
+    &__path-remaining.green {
+      color: rgb(65, 184, 131);
+    }
+
+    &__path-remaining.orange {
+      color: orange;
+    }
+
+    &__path-remaining.red {
+      color: red;
+    }
+
+    &__label {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3em;
+    }
+  }
+}
+
+@keyframes blocks {
+  0%,
+  100% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

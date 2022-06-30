@@ -13,13 +13,14 @@
         <h1 class="start-screen__name">What's your name?</h1>
         <div class="position-relative">
           <input
-            id="name"
+            id="nameForm"
             class="start-screen__name--input"
             type="text"
             placeholder="name"
             required
+            autocomplete="off"
           />
-          <label class="start-screen__name--label" for="name">Name</label>
+          <label class="start-screen__name--label" for="nameForm">Name</label>
         </div>
         <h1 class="start-screen__mode--text">Choose your game mode:</h1>
         <div class="start-screen__mode--btnblock">
@@ -29,7 +30,6 @@
               class="start-screen__mode--radio"
               id="practice"
               type="radio"
-              checked
               name="mode"
             />
             <label class="start-screen__mode--label" for="practice">
@@ -41,6 +41,7 @@
             <input
               class="start-screen__mode--radio"
               id="attack"
+              checked
               type="radio"
               name="mode"
             />
@@ -56,12 +57,12 @@
           don’t know rules? clicke <span>here</span>!
         </a>
         <div class="start-screen__leaderboard">
-          <a href="#">LEADERBOARD</a>
+          <a href="leaderboard.html">LEADERBOARD</a>
         </div>
       </form>
     </section>
     <!-- ########### END FIRST SCREEN ########### -->
 
-    <script src="./scripts/main.js"></script>
+    <script type="module" src="./scripts/start.js"></script>
   </body>
 </html>
