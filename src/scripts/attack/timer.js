@@ -17,11 +17,22 @@ export const _renderTimer = () => {
     },
   }
 
-  const TIME_LIMIT = 20
+  const TIME_LIMIT = 90
   let timePassed = 0
   let timeLeft = TIME_LIMIT
   let timerInterval = null
   let remainingPathColor = COLOR_CODES.info.color
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60)
+    let seconds = time % 60
+
+    if (seconds < 10) {
+      seconds = `0${seconds}`
+    }
+
+    return `${minutes}:${seconds}`
+  }
 
   document.getElementById('timer').innerHTML = `
 <div class="game-container__timer">
@@ -54,28 +65,19 @@ export const _renderTimer = () => {
   }
 
   function startTimer() {
-    timerInterval = setInterval(() => {
-      timePassed = timePassed += 1
-      timeLeft = TIME_LIMIT - timePassed
-      document.getElementById('timer-label').innerHTML = formatTime(timeLeft)
-      setCircleDasharray()
-      setRemainingPathColor(timeLeft)
+    setTimeout(() => {
+      timerInterval = setInterval(() => {
+        timePassed = timePassed += 1
+        timeLeft = TIME_LIMIT - timePassed
+        document.getElementById('timer-label').innerHTML = formatTime(timeLeft)
+        setCircleDasharray()
+        setRemainingPathColor(timeLeft)
 
-      if (timeLeft === 0) {
-        onTimesUp()
-      }
-    }, 1000)
-  }
-
-  function formatTime(time) {
-    const minutes = Math.floor(time / 60)
-    let seconds = time % 60
-
-    if (seconds < 10) {
-      seconds = `0${seconds}`
-    }
-
-    return `${minutes}:${seconds}`
+        if (timeLeft === 0) {
+          onTimesUp()
+        }
+      }, 1000)
+    }, 3000)
   }
 
   function setRemainingPathColor(timeLeft) {

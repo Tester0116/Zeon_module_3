@@ -8,9 +8,14 @@
   </head>
   <body>
     <!-- ########### START GAME SCREEN ########### -->
+    <div class="countdown dn">
+      <h1 id="countDownText">3</h1>
+    </div>
+
     <section class="game">
       <div class="game__bg-dark">
-        <div class="game-container">
+        <h1 class="count" id="count"></h1>
+        <form class="game-container" id="gameForm">
           <div class="game-container__nameAndtimer">
             <h1 class="game-container__name">
               Good luck, <span id="name">Tester</span>
@@ -18,24 +23,27 @@
             <div id="timer"></div>
           </div>
 
-          <div class="game-container__task">
-            <div class="game-container__task--numbers">10</div>
-            <div class="game-container__task--operator">+</div>
-            <div class="game-container__task--numbers">42</div>
+          <div class="game-container__task" id="task">
+            <div class="game-container__task--numbers" id="firstNumber">10</div>
+            <div class="game-container__task--operator" id="operator">+</div>
+            <div class="game-container__task--numbers" id="secondNumber">
+              42
+            </div>
             <div class="game-container__task--equal">=</div>
             <input
               class="game-container__task--result"
-              id="gameResult"
+              id="result"
               type="number"
-              placeholder="5"
+              placeholder="0"
+              autofocus
+              required
             />
           </div>
-          <h4 class="game-container__score">Your score:<span>41</span></h4>
-          <button class="game-container__stop">
-            <span>STOP GAME</span>
-            <b></b>
-          </button>
-        </div>
+          <h4 class="game-container__score">
+            Your score:<span id="scoreForm">0</span>
+          </h4>
+          <button class="game-container__stop" type="button">STOP GAME</button>
+        </form>
       </div>
     </section>
     <!-- ########### END GAME SCREEN ########### -->
