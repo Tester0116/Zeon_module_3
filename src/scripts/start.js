@@ -8,7 +8,9 @@ const startGame = (e) => {
 
   e.preventDefault()
   localStorage.setItem('name', nameInput.value)
-  location.assign(`${mode.id === 'attack' ? 'attack.html' : 'practice.html'}`)
+  localStorage.setItem('mode', mode.id)
+  // location.assign(`${mode.id === 'attack' ? 'attack.html' : 'practice.html'}`)
+  location.assign('attack.html')
 }
 if (nameStorage !== null) {
   nameInputStorage.value = nameStorage

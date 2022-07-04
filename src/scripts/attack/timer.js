@@ -1,3 +1,8 @@
+import { correctAnswer, incorrectAnswer, activeCount } from '../gameLogic.js'
+const correct = document.getElementById('correctAnswer')
+const incorrect = document.getElementById('incorrectAnswer')
+const totalScore = document.getElementById('totalScore')
+
 export const _renderTimer = () => {
   const FULL_DASH_ARRAY = 283
   const WARNING_THRESHOLD = 10
@@ -18,6 +23,7 @@ export const _renderTimer = () => {
   }
 
   const TIME_LIMIT = 90
+  // const TIME_LIMIT = 2
   let timePassed = 0
   let timeLeft = TIME_LIMIT
   let timerInterval = null
@@ -58,13 +64,24 @@ export const _renderTimer = () => {
 </div>
 `
 
-  startTimer()
-
-  function onTimesUp() {
+  const onTimesUp = () => {
     clearInterval(timerInterval)
+    correct.textContent = correctAnswer
+    incorrect.textContent = incorrectAnswer
+    totalScore.textContent = activeCount
+
+    const popup = document.getElementById('popup')
+    const congratulations = document.getElementById('congratulations')
+    popup.classList.add('active')
+    congratulations.classList.add('active')
+    const confettiSettings = { target: 'congratulations' }
+    const confetti = new ConfettiGenerator(confettiSettings)
+    confetti.render()
   }
 
-  function startTimer() {
+  document.getElementById('stopGamebtn').addEventListener('click', onTimesUp)
+
+  const startTimer = () => {
     setTimeout(() => {
       timerInterval = setInterval(() => {
         timePassed = timePassed += 1
@@ -80,29 +97,25 @@ export const _renderTimer = () => {
     }, 3000)
   }
 
-  function setRemainingPathColor(timeLeft) {
+  const setRemainingPathColor = (timeLeft) => {
+    const pathRemaining = document.getElementById('timer-path-remaining')
+
     const { alert, warning, info } = COLOR_CODES
     if (timeLeft <= alert.threshold) {
-      document
-        .getElementById('timer-path-remaining')
-        .classList.remove(warning.color)
-      document.getElementById('timer-path-remaining').classList.add(alert.color)
+      pathRemaining.classList.remove(warning.color)
+      pathRemaining.classList.add(alert.color)
     } else if (timeLeft <= warning.threshold) {
-      document
-        .getElementById('timer-path-remaining')
-        .classList.remove(info.color)
-      document
-        .getElementById('timer-path-remaining')
-        .classList.add(warning.color)
+      pathRemaining.classList.remove(info.color)
+      pathRemaining.classList.add(warning.color)
     }
   }
 
-  function calculateTimeFraction() {
+  const calculateTimeFraction = () => {
     const rawTimeFraction = timeLeft / TIME_LIMIT
     return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction)
   }
 
-  function setCircleDasharray() {
+  const setCircleDasharray = () => {
     const circleDasharray = `${(
       calculateTimeFraction() * FULL_DASH_ARRAY
     ).toFixed(0)} 283`
@@ -110,4 +123,5 @@ export const _renderTimer = () => {
       .getElementById('timer-path-remaining')
       .setAttribute('stroke-dasharray', circleDasharray)
   }
+  startTimer()
 }
