@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: -ms-flexbox;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
 }
 
 @mixin parallax-bg($img-url) {

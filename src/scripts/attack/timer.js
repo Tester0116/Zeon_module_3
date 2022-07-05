@@ -1,7 +1,4 @@
-import { correctAnswer, incorrectAnswer, activeCount } from '../gameLogic.js'
-const correct = document.getElementById('correctAnswer')
-const incorrect = document.getElementById('incorrectAnswer')
-const totalScore = document.getElementById('totalScore')
+import { gameOver } from '../gameLogic.js'
 
 export const _renderTimer = () => {
   const FULL_DASH_ARRAY = 283
@@ -22,8 +19,8 @@ export const _renderTimer = () => {
     },
   }
 
-  const TIME_LIMIT = 90
-  // const TIME_LIMIT = 2
+  // const TIME_LIMIT = 90
+  const TIME_LIMIT = 10
   let timePassed = 0
   let timeLeft = TIME_LIMIT
   let timerInterval = null
@@ -66,17 +63,7 @@ export const _renderTimer = () => {
 
   const onTimesUp = () => {
     clearInterval(timerInterval)
-    correct.textContent = correctAnswer
-    incorrect.textContent = incorrectAnswer
-    totalScore.textContent = activeCount
-
-    const popup = document.getElementById('popup')
-    const congratulations = document.getElementById('congratulations')
-    popup.classList.add('active')
-    congratulations.classList.add('active')
-    const confettiSettings = { target: 'congratulations' }
-    const confetti = new ConfettiGenerator(confettiSettings)
-    confetti.render()
+    gameOver()
   }
 
   document.getElementById('stopGamebtn').addEventListener('click', onTimesUp)

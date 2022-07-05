@@ -1,19 +1,32 @@
 const form = document.getElementById('form')
-const nameStorage = localStorage.getItem('name')
-const nameInputStorage = document.getElementById('nameForm')
+const nameInput = document.getElementById('nameForm')
+const storageData = JSON.parse(localStorage.getItem('players'))
 
 const startGame = (e) => {
-  const mode = document.querySelector('input[type="radio"]:checked')
-  const nameInput = document.getElementById('nameForm')
-
   e.preventDefault()
-  localStorage.setItem('name', nameInput.value)
-  localStorage.setItem('mode', mode.id)
-  // location.assign(`${mode.id === 'attack' ? 'attack.html' : 'practice.html'}`)
+
+  setPlayer()
   location.assign('attack.html')
 }
-if (nameStorage !== null) {
-  nameInputStorage.value = nameStorage
+
+const setPlayer = () => {
+  const mode = document.querySelector('input[type="radio"]:checked')
+
+  let data = {
+    name: nameInput.value,
+    attackModeScore: 0,
+    practiceModeScore: 0,
+    mode: mode.id,
+  }
+
+  if (storageData) {
+    storageData.push(data)
+    localStorage.setItem('players', JSON.stringify(storageData))
+  } else localStorage.setItem('players', JSON.stringify([data]))
+}
+
+if (storageData !== null) {
+  nameInput.value = storageData[storageData.length - 1].name
 }
 
 form.addEventListener('submit', startGame)

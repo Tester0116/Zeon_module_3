@@ -7,6 +7,10 @@ const scoreElement = document.getElementById('scoreForm')
 const task = document.getElementById('task')
 const count = document.getElementById('count')
 const scoreCounter = document.getElementById('scoreCounter')
+const correct = document.getElementById('correctAnswer')
+const incorrect = document.getElementById('incorrectAnswer')
+const totalScore = document.getElementById('totalScore')
+const storageData = JSON.parse(localStorage.getItem('players'))
 
 const getRandom = (min, max) => {
   min = Math.ceil(min)
@@ -68,9 +72,9 @@ const runAnimation = () => {
   })
 }
 
-export let activeCount = 0
-export let correctAnswer = 0
-export let incorrectAnswer = 0
+let activeCount = 0
+let correctAnswer = 0
+let incorrectAnswer = 0
 
 const scoreCounterIncrement = () => {
   scoreCounter.textContent = '+1'
@@ -114,4 +118,40 @@ const onSubmit = (e) => {
 export const _renderGame = () => {
   task.classList.add('animationIn')
   form.addEventListener('submit', onSubmit)
+  document.getElementById('stopGamebtn').addEventListener('click', gameOver)
+}
+
+export const gameOver = () => {
+  correct.textContent = correctAnswer
+  incorrect.textContent = incorrectAnswer
+  totalScore.textContent = activeCount
+
+  const lastData = storageData[storageData.length - 1]
+
+  let data = {
+    name: lastData.name,
+    practiceModeScore: lastData.mode === 'practice' && activeCount,
+    attackModeScore: lastData.mode === 'attack' && activeCount,
+    mode: lastData.mode,
+  }
+
+  storageData.forEach((element) => {
+    if (element.name === lastData.name) {
+    }
+  })
+  if (storageData) {
+    storageData.push(data)
+    // localStorage.setItem('players', JSON.stringify(...storageData, data))
+    localStorage.setItem('players', JSON.stringify(storageData))
+  }
+
+  const popup = document.getElementById('popup')
+  const congratulations = document.getElementById('congratulations')
+
+  popup.classList.add('active')
+  form.style.display = 'none'
+  congratulations.classList.add('active')
+  const confettiSettings = { target: 'congratulations' }
+  const confetti = new ConfettiGenerator(confettiSettings)
+  confetti.render()
 }
