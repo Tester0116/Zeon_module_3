@@ -1,6 +1,11 @@
 const form = document.getElementById('form')
 const nameInput = document.getElementById('nameForm')
 const storageData = JSON.parse(localStorage.getItem('players'))
+const storageName = localStorage.getItem('storageName')
+
+const DEFAULT_USER = {
+  highScore: 0,
+}
 
 const startGame = (e) => {
   e.preventDefault()
@@ -11,22 +16,25 @@ const startGame = (e) => {
 
 const setPlayer = () => {
   const mode = document.querySelector('input[type="radio"]:checked')
+  const name = nameInput.value
+  const leaderboardStorage = JSON.parse(
+    localStorage.getItem(`${mode.id}-leaderboard`)
+  )
 
-  let data = {
-    name: nameInput.value,
-    attackModeScore: 0,
-    practiceModeScore: 0,
-    mode: mode.id,
-  }
+  localStorage.setItem('storageName', name)
+  localStorage.setItem('mode', mode.id)
 
-  if (storageData) {
-    storageData.push(data)
-    localStorage.setItem('players', JSON.stringify(storageData))
-  } else localStorage.setItem('players', JSON.stringify([data]))
+  localStorage.setItem(
+    `${mode.id}-leaderboard`,
+    JSON.stringify({
+      [name]: DEFAULT_USER,
+      ...leaderboardStorage,
+    })
+  )
 }
 
-if (storageData !== null) {
-  nameInput.value = storageData[storageData.length - 1].name
+if (storageName) {
+  nameInput.value = storageName
 }
 
 form.addEventListener('submit', startGame)

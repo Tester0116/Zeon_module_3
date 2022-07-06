@@ -2,9 +2,10 @@ import { _renderGame } from '../gameLogic.js'
 import { _renderTimer } from './timer.js'
 import '../confetti.min.js'
 
-const storageData = JSON.parse(localStorage.getItem('players'))
-document.getElementById('name').textContent =
-  storageData[storageData.length - 1].name
+const storageName = localStorage.getItem('storageName')
+document.getElementById('name').textContent = storageName
+
+const storageMode = localStorage.getItem('mode')
 const nameNtimer = document.getElementById('nameNtimer')
 
 // start delay for 3 second
@@ -34,7 +35,7 @@ popupBtn.forEach((el, index) =>
 )
 // end Game Over
 
-if (storageData[storageData.length - 1].mode === 'attack') _renderTimer()
+if (storageMode === 'attack') _renderTimer()
 else nameNtimer.style.justifyContent = 'center'
 
 _renderGame()

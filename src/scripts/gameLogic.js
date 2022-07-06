@@ -10,7 +10,6 @@ const scoreCounter = document.getElementById('scoreCounter')
 const correct = document.getElementById('correctAnswer')
 const incorrect = document.getElementById('incorrectAnswer')
 const totalScore = document.getElementById('totalScore')
-const storageData = JSON.parse(localStorage.getItem('players'))
 
 const getRandom = (min, max) => {
   min = Math.ceil(min)
@@ -121,28 +120,23 @@ export const _renderGame = () => {
   document.getElementById('stopGamebtn').addEventListener('click', gameOver)
 }
 
+const findUser = (name) => {
+  // storageData
+}
+
 export const gameOver = () => {
   correct.textContent = correctAnswer
   incorrect.textContent = incorrectAnswer
   totalScore.textContent = activeCount
 
-  const lastData = storageData[storageData.length - 1]
+  const storageName = localStorage.getItem('storageName')
+  const mode = localStorage.getItem('mode')
+  const scoreTable = JSON.parse(localStorage.getItem(`${mode}-leaderboard`))
+  const user = scoreTable[storageName]
 
-  let data = {
-    name: lastData.name,
-    practiceModeScore: lastData.mode === 'practice' && activeCount,
-    attackModeScore: lastData.mode === 'attack' && activeCount,
-    mode: lastData.mode,
-  }
-
-  storageData.forEach((element) => {
-    if (element.name === lastData.name) {
-    }
-  })
-  if (storageData) {
-    storageData.push(data)
-    // localStorage.setItem('players', JSON.stringify(...storageData, data))
-    localStorage.setItem('players', JSON.stringify(storageData))
+  if (activeCount > user.highScore) {
+    scoreTable[storageName] = { ...user, highScore: activeCount }
+    localStorage.setItem(`${mode}-leaderboard`, JSON.stringify(scoreTable))
   }
 
   const popup = document.getElementById('popup')
