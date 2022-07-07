@@ -84,24 +84,39 @@
         <div class="leaderboard__container--glass">
           <div class="leaderboard__container--content">
             <h1 class="leaderboard__container--title">LEADERBOARD</h1>
-            
-          
-              <div class="leaderboard__mode"> 	
-                <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-                <label class="for-dropdown" for="dropdown">Game mode<i class="uil uil-arrow-down"></i>
-                </label>
 
-                <div class="section-dropdown"> 
-                  <a class="items" href="#">Attack</a>
-                  <a href="#">Practice</a>
-                </div>
+            <div class="leaderboard__mode">
+              <label class="leaderboard__mode--label" for="gameMode">
+                Game mode:
+              </label>
 
-            <div class="leaderboard__list" id="leaderList">
-              </div>
+              <select
+                class="leaderBoard__mode--select"
+                name="mode"
+                id="gameMode"
+              >
+                <option class="leaderBoard__mode--option" value="attack">
+                  attack
+                </option>
+                <option class="leaderBoard__mode--option" value="practice">
+                  practice
+                </option>
+              </select>
+            </div>
+
+            <div class="leaderboard__head">
+              <span>Name</span>
+              <span>userScore</span>
+            </div>
+
+            <ul class="leaderboard__list" id="leaderList"></ul>
+
+            <button class="leaderboard__btn">
+              <a href="/">Go to main</a><b></b>
+            </button>
+          </div>
+        </div>
       </div>
-      <button class="leaderboard__btn">
-        <a href="/">Go to main</a><b></b>
-      </button>
     </section>
     <script src="../scripts/leaderBoard/index.js"></script>
   </body>
