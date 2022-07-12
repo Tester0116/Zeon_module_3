@@ -9,6 +9,7 @@ function parallax(e) {
     el.style.transform = `translateX(${x}px) translateY(${y}px)`
   })
 }
+
 function t(mode = storageMode) {
   return JSON.parse(localStorage.getItem(`${mode}-leaderboard`))
 }

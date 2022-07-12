@@ -5,7 +5,6 @@ const result = document.getElementById('result')
 const form = document.getElementById('gameForm')
 const scoreElement = document.getElementById('scoreForm')
 const task = document.getElementById('task')
-const count = document.getElementById('count')
 const scoreCounter = document.getElementById('scoreCounter')
 const correct = document.getElementById('correctAnswer')
 const incorrect = document.getElementById('incorrectAnswer')
@@ -61,13 +60,11 @@ renderExample(example)
 const runAnimation = () => {
   task.classList.remove('animationIn')
 
-  scoreElement.classList.remove('incorrect')
   scoreCounter.classList.remove('animation')
 
   requestAnimationFrame(() => {
     scoreCounter.classList.add('animation')
     task.classList.add('animationIn')
-    scoreElement.classList.add('incorrect')
   })
 }
 
@@ -92,6 +89,9 @@ const scoreCounterDecrement = () => {
 
   // for animation score
   scoreElement.classList.add('inсorrect')
+  setTimeout(() => {
+    scoreElement.classList.remove('inсorrect')
+  }, 1000)
 }
 
 const onSubmit = (e) => {
@@ -101,11 +101,11 @@ const onSubmit = (e) => {
   if (!result.value) return
   if (Number(result.value) === Number(example.result)) {
     activeCount += 1
-    count.textContent = '+1'
+    scoreElement.textContent = '+1'
     scoreCounterIncrement()
   } else {
     activeCount -= 1
-    count.textContent = '-1'
+    scoreElement.textContent = '-1'
     scoreCounterDecrement()
   }
   scoreElement.textContent = activeCount
@@ -118,10 +118,6 @@ export const _renderGame = () => {
   task.classList.add('animationIn')
   form.addEventListener('submit', onSubmit)
   document.getElementById('stopGamebtn').addEventListener('click', gameOver)
-}
-
-const findUser = (name) => {
-  // storageData
 }
 
 export const gameOver = () => {

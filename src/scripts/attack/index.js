@@ -7,7 +7,6 @@ document.getElementById('name').textContent = storageName
 
 const storageMode = localStorage.getItem('mode')
 const nameNtimer = document.getElementById('nameNtimer')
-
 // start delay for 3 second
 let counter = 3
 
