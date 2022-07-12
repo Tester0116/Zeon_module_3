@@ -9,6 +9,19 @@
   <body>
     <!-- ########### START FIRST SCREEN ########### -->
     <section class="start-screen">
+      <div class="start-screen__rulesBlock" id="rulesBlock">
+        <span class="start-screen__rulesBlock--close" id="closeRules">X</span>
+        <h1>Instruction</h1>
+        <ol class="start-screen__rulesBlock--list">
+          <li>Enter a name</li>
+          <li>select a mode</li>
+          <li>and enjoy the game )</li>
+          <li>in attack mode, you'll have 1.30 minutes</li>
+          <li>in practice mode, you can play as much as you want</li>
+          <li>in practice mode, you can play as much as you want</li>
+          <li>you can see your scores in the leaderboard</li>
+        </ol>
+      </div>
       <form class="start-screen__form" id="form">
         <h1 class="start-screen__name">What's your name?</h1>
         <div class="position-relative">
@@ -53,7 +66,7 @@
           <!-- *** end *** -->
         </div>
         <button class="start-screen__startBtn" type="submit">Let’s go!</button>
-        <a class="start-screen__rules" href="https://whois.ru" target="_blank">
+        <a class="start-screen__rules" id="rulesBtn" href="#" role="button">
           don’t know rules? clicke <span>here</span>!
         </a>
         <div class="start-screen__leaderboard">

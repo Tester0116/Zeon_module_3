@@ -2,6 +2,9 @@ const form = document.getElementById('form')
 const nameInput = document.getElementById('nameForm')
 const storageData = JSON.parse(localStorage.getItem('players'))
 const storageName = localStorage.getItem('storageName')
+const rulesBtn = document.getElementById('rulesBtn')
+const rulesBlock = document.getElementById('rulesBlock')
+const closeRules = document.getElementById('closeRules')
 
 const DEFAULT_USER = {
   highScore: 0,
@@ -38,3 +41,11 @@ if (storageName) {
 }
 
 form.addEventListener('submit', startGame)
+
+const toggleRules = () => {
+  rulesBlock.classList.toggle('active')
+  form.classList.toggle('dn')
+}
+
+rulesBtn.addEventListener('click', toggleRules)
+closeRules.addEventListener('click', toggleRules)
