@@ -121,7 +121,6 @@ $--clr: #1e9bff;
     }
   }
   &__mode {
-    // background-color: red;
     margin-top: 10px;
     appearance: none;
     -webkit-appearance: none;
@@ -198,15 +197,15 @@ $--clr: #1e9bff;
   &__btn {
     position: relative;
     background: #444;
+    margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
     padding: 10px 30px;
     transition: 0.5s;
     background: $--clr;
     box-shadow: 0 0 35px $--clr;
     top: 30px;
     &:hover {
-      letter-spacing: 0.25em;
+      letter-spacing: 0.25rem;
     }
 
     &::before {
@@ -219,7 +218,9 @@ $--clr: #1e9bff;
       position: relative;
       z-index: 1;
       color: $--clr;
-      font-size: 1.5em;
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+
     }
     & > b {
       position: absolute;

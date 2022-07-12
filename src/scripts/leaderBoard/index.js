@@ -36,5 +36,5 @@ const setScores = (table) => {
     list.append(item)
   }
 }
-chooseMode.value = storageMode
+chooseMode.value = storageMode ?? 'attack'
 setScores(t())
